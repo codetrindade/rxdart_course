@@ -1,44 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:rxdart/rxdart.dart';
 
-class MyHomePage extends StatefulWidget {
+class MyHomePage extends HookWidget {
   const MyHomePage({super.key});
 
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  late final BehaviorSubject<String> subject;
-
-  @override
-  void initState() {
-    super.initState();
-    subject = BehaviorSubject<String>();
-  }
-
-  @override
-  void dispose() {
-    subject.close();
-    super.dispose();
-  }
-
-  @override
+  @override 
   Widget build(BuildContext context) {
+    //Create
+    final subject = useMemoized(()=> BehaviorSubject<String>(), [key]);
+    //Dispose
+    useEffect(() => subject.close, [subject]);
     return Scaffold(
       appBar: AppBar(
         key: const Key("appBarHome"),
         title:  StreamBuilder<String>(
-          stream: subject.stream,
+          stream: subject.stream.distinct().debounceTime(const Duration(milliseconds: 150)),
           builder: (context, snapshot) {
-            return Text(snapshot.data.toString() ?? '');
+            return Text(snapshot.data.toString());
           }
         ),
       ),
       body: SafeArea(
           child: Center(
         child: TextField(
-          onChanged: (value) => subject.sink.add(value),
+          onChanged: subject.sink.add,
         ),
       )),
     );
