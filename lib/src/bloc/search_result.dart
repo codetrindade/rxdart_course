@@ -22,9 +22,9 @@ import 'package:rxdart_course/src/models/thing.dart';
 }
 
 @immutable class SearchResultWithResult implements SearchResult{
-  final List<Thing>? result;
+  final List<Thing> results;
 
-  const SearchResultWithResult(this.result);
+  const SearchResultWithResult(this.results);
   
 
 }
