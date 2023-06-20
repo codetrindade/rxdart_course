@@ -6,7 +6,6 @@ import 'package:rxdart_course/src/models/person.dart';
 class SearchResultView extends StatelessWidget {
   final Stream<SearchResult?> searchResult;
   const SearchResultView({super.key, required this.searchResult});
-
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<SearchResult?>(
