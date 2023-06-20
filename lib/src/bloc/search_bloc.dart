@@ -9,6 +9,9 @@ class SearchBloc {
   final Stream<SearchResult?> results;
   const SearchBloc._({required this.search, required this.results});
 
+  void dispose(){
+    search.close();
+  }
   factory SearchBloc({required Api api}) {
     final textChanges = BehaviorSubject<String>();
 
