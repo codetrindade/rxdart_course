@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:rxdart_course/src/Home/home.dart';
+import 'package:rxdart_course/src/views/home_page.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(),
+      home: const HomePage(),
     );
   }
 }
