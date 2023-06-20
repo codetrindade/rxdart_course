@@ -9,7 +9,7 @@ enum AnimalType {dog, cat, rabbit, unknow}
   const Animal({required super.name, required this.type});
   @override
   String toString() {
-    return 'Animal: $name, Type: $type';
+    return 'Animal, name: $name, Type: $type';
   }
 
   factory Animal.fromJson(Map<String, dynamic> json){

@@ -8,9 +8,8 @@ class Person extends Thing {
   const Person({required super.name, required this.age});
   @override
   String toString() {
-    return 'Person: $name, Age: $age';
+    return 'Person, name: $name, Age: $age';
   }
-
   Person.fromJson(Map<String, dynamic> json)
       : age = json["age"] as int,
         super(name: json["name"] as String);
