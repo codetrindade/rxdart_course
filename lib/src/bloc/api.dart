@@ -66,7 +66,7 @@ class Api {
       .then((response) => response.transform(utf8.decoder).join(""))
       .then((jsonString) => json.decode(jsonString) as List<dynamic>);
 }
-
+  
 extension TrimmedCaseInsensitiveContain on String {
   bool trimmedContains(String other) =>
       trim().toLowerCase().contains(other.trim().toLowerCase());
